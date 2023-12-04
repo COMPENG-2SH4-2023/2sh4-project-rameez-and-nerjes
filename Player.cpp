@@ -162,8 +162,10 @@ bool Player::checkSelfCollision()
             playerPosList->getElement(tempBody, j);
             if(tempBody.isPosEqual(&currHead))
             {
+                
                 mainGameMechsRef->setLoseFlag();
                 mainGameMechsRef->setExitTrue();
+                
 
              
             }

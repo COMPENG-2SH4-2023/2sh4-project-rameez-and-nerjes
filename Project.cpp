@@ -60,10 +60,6 @@ void Initialize(void)
    
     myGM ->generateFood(myPlayer->getPlayerPos());
     
-    //Think about whether you want to set up a debug key to call the food generationr outine for
-    //verification
-
-//remember, generate food requires player reference/ you will need to provide it after player object is insttianted
    
 }
 
@@ -81,13 +77,16 @@ void GetInput(void)
 
 void RunLogic(void)
 {
+
+    //This updates the player direction based on the keyboard key pressed
     myPlayer->updatePlayerDir();
+
+
+    //This moves the player based on the updated direction
     myPlayer->movePlayer();
     
  
 
-    //When i add this screen deleted..ask why?
-    //myGm->clearInput();
 
     //COllISION LOGIC 
     //This logic checks to see if the "food was consumed. If it has been consumed, the snake length will be increased, score increments,"
@@ -100,15 +99,23 @@ void RunLogic(void)
     myGM ->generateFood(myPlayer->getPlayerPos());
 }
     
+ 
+   
     
     //Suicide/self collision logic :(
     //this calls the self collision check. if true, game is ended
     myPlayer->checkSelfCollision();
 
+    
+
+
+
 }
 
 void DrawScreen(void)
 {
+
+    
     MacUILib_clearScreen(); 
     bool drawn;
     objPosArrayList* PlayerBody = myPlayer->getPlayerPos();
@@ -170,8 +177,10 @@ void DrawScreen(void)
     } 
   
 
+    //This prints score on screen 
     MacUILib_printf("\nScore: %d",  myGM->getScore());
-   
+
+    
 
 
 
